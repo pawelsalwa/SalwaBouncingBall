@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using ScriptableObjects.Events;
 using UnityEngine;
 
 namespace ScriptableObjects.Events
@@ -59,27 +58,27 @@ namespace ScriptableObjects.Events
 			Paused = false;
 		}
 	}
-}
 
 #if UNITY_EDITOR
-[UnityEditor.CustomEditor(typeof(PauseGameEvent))]
-public class PauseGameEventEditor : UnityEditor.Editor
-{
-	private PauseGameEvent pauseGameEvent;
-
-	public override void OnInspectorGUI()
+	[UnityEditor.CustomEditor(typeof(PauseGameEvent))]
+	public class PauseGameEventEditor : UnityEditor.Editor
 	{
-		base.OnInspectorGUI();
-		if (GUILayout.Button("Debug Pause Game"))
-			pauseGameEvent.PauseGame();
+		private PauseGameEvent pauseGameEvent;
 
-		if (GUILayout.Button("Debug Unpause Game"))
-			pauseGameEvent.UnpauseGame();
-	}
+		public override void OnInspectorGUI()
+		{
+			base.OnInspectorGUI();
+			if (GUILayout.Button("Debug Pause Game"))
+				pauseGameEvent.PauseGame();
 
-	private void OnEnable()
-	{
-		pauseGameEvent = target as PauseGameEvent;
+			if (GUILayout.Button("Debug Unpause Game"))
+				pauseGameEvent.UnpauseGame();
+		}
+
+		private void OnEnable()
+		{
+			pauseGameEvent = target as PauseGameEvent;
+		}
 	}
-}
 #endif
+}
