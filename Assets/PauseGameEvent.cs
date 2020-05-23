@@ -56,6 +56,7 @@ namespace ScriptableObjects.Events
 		{
 			pauseActions = new List<Action>();
 			unpauseActions = new List<Action>();
+			Paused = false;
 		}
 	}
 }
